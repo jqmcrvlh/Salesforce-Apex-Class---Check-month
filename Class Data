@@ -1,0 +1,53 @@
+public class Data {
+    private integer ano,mes,dia;
+    
+    public integer getAno(){
+        return ano;
+    }    
+    ///////////
+    
+    public integer getMes(){
+        return mes;
+    }    
+    ///////////
+    
+    public integer getDia(){
+        return dia;
+    }    
+    ///////////
+    
+    public void setData(integer qualDia, integer qualMes,integer qualAno){        
+        if(Date.isLeapYear(qualAno) && qualMes== 2 && qualDia > 29){
+            system.debug('Ano é Bissexto e Fevereiro maior de 29 - favor corrigir');           
+        }else if(!Date.isLeapYear(qualAno) && qualMes== 2 && qualDia > 28 ){
+        	 system.debug('Fevereiro é maior que 28 - favor corrigir'); 
+        }else if((qualMes == 4  && qualDia > 30) || (qualMes == 6 && qualDia > 30) || (qualMes == 9 && qualDia > 30) || (qualMes == 11 && qualDia > 30)){
+             system.debug('Mês é de 30 dias  - favor corrigir');
+        }else{
+            if(qualDia >= 1 && qualDia <= 31){            
+                dia = qualDia;
+            }else{
+                system.debug('Dia fora do range aceitável entre 1 e 31');
+            }
+            if(qualMes >=1 && qualMes <=12){
+                mes = qualMes;
+            }else{
+                system.debug('Mes fora do range aceitável entre 1 e 12');
+            } 
+            if(qualAno >=1900 && qualAno <= 2199){
+                ano = qualAno;
+            }else{
+                system.debug('Ano fora do range aceitável entre 1900 e 2199');
+            } 
+        }
+        //system.debug(dia+'-'+mes+'-'+ano);    
+    }
+    public void mostrarData(){
+        if(integer.valueOf(dia)== null || integer.valueOf(mes) == null || integer.valueOf(ano) == null){
+            system.debug('parametros da data estão incorretos favor checar');
+        }else{
+            system.debug(dia+'-'+mes+'-'+ano);
+        }
+        
+    }
+}
