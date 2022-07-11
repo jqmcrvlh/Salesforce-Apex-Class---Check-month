@@ -1,0 +1,6 @@
+/////################
+/////################
+Data ResultadoData = new Data();
+
+ResultadoData.setData(30,02,2012);
+ResultadoData.mostrarData();
